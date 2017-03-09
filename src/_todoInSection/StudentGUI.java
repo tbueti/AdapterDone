@@ -8,8 +8,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.RowSorter;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 @SuppressWarnings("serial")
 public class StudentGUI extends JFrame {
@@ -43,22 +46,29 @@ public class StudentGUI extends JFrame {
     setLocation(30, 30);
 
     // TODO: 2) Need a new StudentCollection as our model
+    this.model = new StudentCollection();
  
     // TODO: 3) Construct the JTable (table) with our model as an argument (could use setModel)
- 
+    this.table = new JTable();
+    this.table.setModel(this.model);
+    
     // TODO: 4) Construct a JScrollPane to decorate table so that if the data exceeds the 
     // side of the table in the  GUI, then it automatically becomes scrollable.
+    JScrollPane scroller = new JScrollPane(this.table);
     
     // TODO: 5) Add JScrollPane to this JFrame
-   
+    this.add(scroller, BorderLayout.CENTER);   
     
     // TODO: Run this code to see if the JTable appears (no code to write)
 
     
     // TODO: 6) Construct a new RowSorter<TableModel> to be a TableRowSorter
     // while setting its model to model
+    TableRowSorter sorter = new TableRowSorter<TableModel>();
+    sorter.setModel(this.model);
  
     // TODO: 7) Link up table and the sorter
+    this.table.setRowSorter(sorter);
  
     // Layout the GUI
     JButton button = new JButton("Select Highlighted Row");
@@ -75,12 +85,54 @@ public class StudentGUI extends JFrame {
 
     @Override
     public void actionPerformed(ActionEvent arg0) {
-      // TODO: 8) Show the name of the student on the currently selected
-      // row need table's getSelectedRow and convertRowIndexToModel as
-      // well as model's getValueAt(rowIndex, columnIndex). See the API
-      // for details.
-      System.out.println("Get student's name from the table");
+    	
+    	// TODO: 8) Show the name of the student on the currently selected
+    	// row need table's getSelectedRow and convertRowIndexToModel as
+    	// well as model's getValueAt(rowIndex, columnIndex). See the API
+    	// for details.
+      
+    	System.out.println("Get student's name from the table");
 
     }
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
